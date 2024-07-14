@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control de Cuentas</title>
+    <link rel="shortcut icon" href="https://papiquieropizzaya.github.io/Icon.png" type="image/x-icon">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            padding: 20px;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .mesa {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .mesa h2 {
+            margin-top: 0;
+        }
+        .mesa input[type="number"] {
+            width: 100px;
+            padding: 5px;
+            margin-right: 10px;
+        }
+        .mesa button {
+            padding: 5px 10px;
+            margin-right: 10px;
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .mesa button.reset {
+            background-color: #dc3545;
+        }
+        .mesa button:hover {
+            background-color: #218838;
+        }
+        .mesa button.reset:hover {
+            background-color: #c82333;
+        }
+        .mesa .total {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Control de Cuentas</h1>
+
+<div class="grid-container">
+    <div class="mesa" id="mesa1">
+        <h2>Mesa 1</h2>
+        <input type="number" id="input1" placeholder="Ingrese monto">
+        <button onclick="sumar(1)">Agregar</button>
+        <button class="reset" onclick="resetear(1)">Resetear</button>
+        <p>Total: <span class="total" id="total1">0</span></p>
+    </div>
+
+    <div class="mesa" id="mesa2">
+        <h2>Mesa 2</h2>
+        <input type="number" id="input2" placeholder="Ingrese monto">
+        <button onclick="sumar(2)">Agregar</button>
+        <button class="reset" onclick="resetear(2)">Resetear</button>
+        <p>Total: <span class="total" id="total2">0</span></p>
+    </div>
+
+    <div class="mesa" id="mesa3">
+        <h2>Mesa 3</h2>
+        <input type="number" id="input3" placeholder="Ingrese monto">
+        <button onclick="sumar(3)">Agregar</button>
+        <button class="reset" onclick="resetear(3)">Resetear</button>
+        <p>Total: <span class="total" id="total3">0</span></p>
+    </div>
+
+    <div class="mesa" id="mesa4">
+        <h2>Mesa 4</h2>
+        <input type="number" id="input4" placeholder="Ingrese monto">
+        <button onclick="sumar(4)">Agregar</button>
+        <button class="reset" onclick="resetear(4)">Resetear</button>
+        <p>Total: <span class="total" id="total4">0</span></p>
+    </div>
+
+    <div class="mesa" id="mesa5">
+        <h2>Mesa 5</h2>
+        <input type="number" id="input5" placeholder="Ingrese monto">
+        <button onclick="sumar(5)">Agregar</button>
+        <button class="reset" onclick="resetear(5)">Resetear</button>
+        <p>Total: <span class="total" id="total5">0</span></p>
+    </div>
+
+    <div class="mesa" id="mesa6">
+        <h2>Mesa 6</h2>
+        <input type="number" id="input6" placeholder="Ingrese monto">
+        <button onclick="sumar(6)">Agregar</button>
+        <button class="reset" onclick="resetear(6)">Resetear</button>
+        <p>Total: <span class="total" id="total6">0</span></p>
+    </div>
+</div>
+
+<script>
+    let totales = [0, 0, 0, 0, 0, 0];
+
+    function sumar(mesa) {
+        let input = document.getElementById(`input${mesa}`);
+        let monto = parseFloat(input.value);
+        if (!isNaN(monto)) {
+            totales[mesa - 1] += monto;
+            document.getElementById(`total${mesa}`).innerText = totales[mesa - 1].toFixed(2);
+            input.value = '';
+        } else {
+            alert("Por favor ingrese un número válido.");
+        }
+    }
+
+    function resetear(mesa) {
+        totales[mesa - 1] = 0;
+        document.getElementById(`total${mesa}`).innerText = '0';
+    }
+</script>
+
+</body>
+</html>
